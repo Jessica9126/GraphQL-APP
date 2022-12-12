@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import gql from 'graphql-tag';
 import {Link} from 'react-router-dom';
 import login from '../login.png';
 // import { Query } from 'react-apollo';
@@ -23,8 +22,8 @@ export class Register extends Component {
     this.passwordEl = React.createRef();
   }
 
-  submitHandler = event =>{
-    
+  submitHandler = () =>{
+
     const email = this.emailEl.current.value;
     const password = this.passwordEl.current.value;
 
@@ -69,6 +68,10 @@ export class Register extends Component {
                 <input type="password" class="form-control" ref={this.passwordEl} id="floatingPassword" placeholder="Password"></input>
                 <label for="floatingPassword">Password</label>
             </div>
+            {/* <div style={{width: "400px"}} class="form-floating mb-3">
+                <input type="password" class="form-control" ref={this.passwordEl} id="floatingPassword" placeholder="Password"></input>
+                <label for="floatingPassword">Confirmed Password</label>
+            </div> */}
             <Link to={`/`} class="btn btn-success" onClick={this.submitHandler}>Register</Link>
         </div>
       </div>
