@@ -11,6 +11,7 @@
     "classnames": "^2.3.2",
     "graphql": "^16.6.0",
     "moment": "^2.29.4",
+    "mv": "^2.1.1",
     "react": "^18.2.0",
     "react-apollo": "^3.1.5",
     "react-dom": "^18.2.0",
@@ -21,7 +22,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && mv build ../public",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -37,6 +38,7 @@
       "not dead",
       "not op_mini all"
     ],
+    "proxy": "http://localhost:7000",
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
