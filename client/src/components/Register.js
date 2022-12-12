@@ -31,7 +31,7 @@ export class Register extends Component {
     const requestBody = {
       query: `
         mutation{
-          createUser(userInput: {email: ${email}, password: ${password}){
+          createUser(userInput: {email: "${email}", password: "${password}"}){
             email
           }
         }
