@@ -5,77 +5,53 @@ const {
     GraphQLString, 
     GraphQLBoolean, 
     GraphQLList, 
-    GraphQLSchema
+    GraphQLSchema,
+    GraphQLNonNull
 } = require('graphql');
 
-//Launch Type
-const LaunchType = new GraphQLObjectType({
-    name: 'Launch',
-    fields: () => ({
-        flight_number: { type: GraphQLInt },
-        mission_name : { type: GraphQLString },
-        launch_year: { type: GraphQLString },
-        launch_date_local: { type: GraphQLString },
-        launch_success : { type: GraphQLBoolean },
-        rocket: { type: RocketType },
-    })
-});
+const users = [
+    {id: 1, name: 'Jessica'},
+    {id: 2, name: 'Jessica2'},
+    {id: 3, name: 'Jessica3'},
+    {id: 4, name: 'Jessica4'},
+    {id: 5, name: 'Jessica5'},
+    {id: 6, name: 'Jessica6'}
+]
 
-//Rocket Type
-const RocketType = new GraphQLObjectType({
-    name: 'Rocket',
+//User Type
+const UserType = new GraphQLObjectType({
+    name: 'User',
     fields: () => ({
-        rocket_id: { type: GraphQLString },
-        rocket_name : { type: GraphQLString },
-        rocket_type: { type: GraphQLString },
+        id: {type: new GraphQLNonNull(GraphQLInt)},
+        name: {type: new GraphQLNonNull(GraphQLString)}
     })
 });
 
 //Root Query
 const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
-    fields:{
-        launches: {
-            type: new GraphQLList(LaunchType),
-            resolve(parent, args){
-                return axios
-                    .get('https://api.spacexdata.com/v3/launches')
-                    .then(res => res.data);
-            }
+    fields: () => ({
+        users: {
+            type: new GraphQLList(UserType),
+            resolve: () => users
         },
-        launch: {
-            type: LaunchType,
-            args: {
-                flight_number: {type: GraphQLInt}
-            },
-            resolve(parent, args){
-                return axios
-                    .get(`https://api.spacexdata.com/v3/launches/${args.flight_number}`)
-                    .then(res => res.data)
-            }
-        },
-        rockets: {
-            type: new GraphQLList(RocketType),
-            resolve(parent, args){
-                return axios
-                    .get('https://api.spacexdata.com/v3/rockets')
-                    .then(res => res.data);
-            }
-        },
-        rocket: {
-            type: RocketType,
-            args: {
-                id: {type: GraphQLInt}
-            },
-            resolve(parent, args){
-                return axios
-                    .get(`https://api.spacexdata.com/v3/launches/${args.id}`)
-                    .then(res => res.data)
-            }
-        }
-    }
+        // launches: {
+        //     type: new GraphQLList(LaunchType),
+        //     resolve(parent, args){
+        //         return axios.get(`https://api.spacexdata.com/v3/launches`)
+        //             .then(res => res.data); 
+        //             //返回类型数组有问题
+        //     }
+        // },
+    })
+});
+
+//Root Mutation
+const RootMutation = new GraphQLObjectType({
+    
 });
 
 module.exports = new GraphQLSchema({
-    query: RootQuery
+    query: RootQuery,
+    mutation: RootMutation     
 });
