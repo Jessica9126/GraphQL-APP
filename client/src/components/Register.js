@@ -23,15 +23,15 @@ export class Register extends Component {
     this.passwordEl = React.createRef();
   }
 
-  submitHandler = event =>{
-    event.preventDefault();
-    const email = this.emailEl.value;
-    const password = this.passwordEl. value;
+  submitHandler = () =>{
+    
+    const email = this.emailEl.current.value;
+    const password = this.passwordEl.current.value;
 
     const requestBody = {
       query: `
         mutation{
-          createUser(userInput: {email: "${email}", password: "${password}"}){
+          createUser(userInput: {email: ${email}, password: ${password}){
             email
           }
         }
@@ -69,7 +69,7 @@ export class Register extends Component {
                 <input type="password" class="form-control" ref={this.passwordEl} id="floatingPassword" placeholder="Password"></input>
                 <label for="floatingPassword">Password</label>
             </div>
-            <Link to={`/`} class="btn btn-success" onSubmit={this.submitHandler}>Register</Link>
+            <Link to={`/`} class="btn btn-success" onClick={this.submitHandler}>Register</Link>
         </div>
       </div>
     )
