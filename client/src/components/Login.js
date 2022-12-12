@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
 import login from '../login.png';
+<<<<<<<<< Temporary merge branch 1
+=========
 import HomePage from './HomePage';
 
 
@@ -60,55 +62,28 @@ export class Login extends Component {
             <h3>Login</h3>
             <br/>
             <div style={{width: "400px"}} class="form-floating mb-3">
-                <input type="email" class="form-control" ref={this.emailEl} placeholder="name@example.com"></input>
-                <label for="floatingInput">Email address</label>
-            </div>
-            <div style={{width: "400px"}} class="form-floating mb-3">
-                <input type="password" class="form-control" ref={this.passwordEl} placeholder="Password"></input>
-                <label for="floatingPassword">Password</label>
-            </div>
-            <Link to={`/register`} class="btn btn-outline-success">Sign Up</Link>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <Link to={`/homepage`} class="btn btn-success" onClick={this.submitHandler}>Login</Link>
-        </div>
-      </div>
-    )
-  }
-}
-  
-export default Login
-import React, { Component } from 'react'
-import {Link} from 'react-router-dom';
-import login from '../login.png';
-
-
-export class Login extends Component {
-
-  render() {
-    return (
-      <div className="container">
-        <br/>
-        <br/>
-        <br/>
-        <img
-          src = {login}
-          alt = "Login Logo"
-          style={{ width: 150, display: 'block', margin: 'auto'}}
-        />
-        <div class="form-group" align = "center">
-            <h3>Login</h3>
-            <br/>
-            <div style={{width: "400px"}} class="form-floating mb-3">
+<<<<<<<<< Temporary merge branch 1
                 <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"></input>
                 <label for="floatingInput">Email address</label>
             </div>
             <div style={{width: "400px"}} class="form-floating mb-3">
                 <input type="password" class="form-control" id="floatingPassword" placeholder="Password"></input>
+=========
+                <input type="email" class="form-control" ref={this.emailEl} placeholder="name@example.com"></input>
+                <label for="floatingInput">Email address</label>
+            </div>
+            <div style={{width: "400px"}} class="form-floating mb-3">
+                <input type="password" class="form-control" ref={this.passwordEl} placeholder="Password"></input>
+>>>>>>>>> Temporary merge branch 2
                 <label for="floatingPassword">Password</label>
             </div>
             <Link to={`/register`} class="btn btn-outline-success">Sign Up</Link>
             &nbsp;&nbsp;&nbsp;&nbsp;
+<<<<<<<<< Temporary merge branch 1
             <Link to={`/homepage`} class="btn btn-success">Login</Link>
+=========
+            <Link to={`/homepage`} class="btn btn-success" onClick={this.submitHandler}>Login</Link>
+>>>>>>>>> Temporary merge branch 2
         </div>
       </div>
     )
